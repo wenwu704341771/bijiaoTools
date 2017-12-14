@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SoftwarerLogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“SoftwarerLog.dbo.ErrorLog”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="nId" />
+            <PropertyRef Name="dtDate" />
+            <PropertyRef Name="sThread" />
+            <PropertyRef Name="sLevel" />
+            <PropertyRef Name="sLogger" />
+            <PropertyRef Name="sMessage" />
+          </Key>
+          <Property Name="nId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dtDate" Type="datetime" Nullable="false" />
+          <Property Name="sThread" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="sLevel" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="sLogger" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="sMessage" Type="nvarchar" MaxLength="3000" Nullable="false" />
+          <Property Name="sException" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="OperationLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="UseIP" Type="varchar" MaxLength="50" />
+          <Property Name="OperationModule" Type="varchar" MaxLength="50" />
+          <Property Name="OperationSubModule" Type="varchar" MaxLength="50" />
+          <Property Name="OperationContent" Type="varchar" MaxLength="500" />
+          <Property Name="OperationTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SystemLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrClass" Type="varchar" MaxLength="500" />
+          <Property Name="IP" Type="varchar" MaxLength="50" />
+          <Property Name="LogTime" Type="datetime" />
+          <Property Name="LogDis" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="SoftwarerLogModelStoreContainer">
+          <EntitySet Name="OperationLog" EntityType="Self.OperationLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemLog" EntityType="Self.SystemLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ErrorLog].[nId] AS [nId], 
+    [ErrorLog].[dtDate] AS [dtDate], 
+    [ErrorLog].[sThread] AS [sThread], 
+    [ErrorLog].[sLevel] AS [sLevel], 
+    [ErrorLog].[sLogger] AS [sLogger], 
+    [ErrorLog].[sMessage] AS [sMessage], 
+    [ErrorLog].[sException] AS [sException]
+    FROM [dbo].[ErrorLog] AS [ErrorLog]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SoftwarerLogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="OperationLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UseIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperationModule" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperationSubModule" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperationContent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OperationTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SystemLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrClass" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LogTime" Type="DateTime" Precision="3" />
+          <Property Name="LogDis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="nId" />
+            <PropertyRef Name="dtDate" />
+            <PropertyRef Name="sThread" />
+            <PropertyRef Name="sLevel" />
+            <PropertyRef Name="sLogger" />
+            <PropertyRef Name="sMessage" />
+          </Key>
+          <Property Name="nId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dtDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sThread" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sLevel" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sLogger" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sMessage" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sException" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="SoftwarerLogEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OperationLog" EntityType="Self.OperationLog" />
+          <EntitySet Name="SystemLog" EntityType="Self.SystemLog" />
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SoftwarerLogModelStoreContainer" CdmEntityContainer="SoftwarerLogEntities">
+          <EntitySetMapping Name="OperationLog">
+            <EntityTypeMapping TypeName="SoftwarerLogModel.OperationLog">
+              <MappingFragment StoreEntitySet="OperationLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UseIP" ColumnName="UseIP" />
+                <ScalarProperty Name="OperationModule" ColumnName="OperationModule" />
+                <ScalarProperty Name="OperationSubModule" ColumnName="OperationSubModule" />
+                <ScalarProperty Name="OperationContent" ColumnName="OperationContent" />
+                <ScalarProperty Name="OperationTime" ColumnName="OperationTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemLog">
+            <EntityTypeMapping TypeName="SoftwarerLogModel.SystemLog">
+              <MappingFragment StoreEntitySet="SystemLog">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ErrClass" ColumnName="ErrClass" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+                <ScalarProperty Name="LogDis" ColumnName="LogDis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLog">
+            <EntityTypeMapping TypeName="SoftwarerLogModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="nId" ColumnName="nId" />
+                <ScalarProperty Name="dtDate" ColumnName="dtDate" />
+                <ScalarProperty Name="sThread" ColumnName="sThread" />
+                <ScalarProperty Name="sLevel" ColumnName="sLevel" />
+                <ScalarProperty Name="sLogger" ColumnName="sLogger" />
+                <ScalarProperty Name="sMessage" ColumnName="sMessage" />
+                <ScalarProperty Name="sException" ColumnName="sException" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

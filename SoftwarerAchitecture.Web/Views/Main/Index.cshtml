@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "首页";
+    Layout = "~/Views/Master/_master.cshtml";
+    List<SoftwarerAchitecture.Models.DbMainInterface.SearchResult> list = ViewBag.ModelList as List<SoftwarerAchitecture.Models.DbMainInterface.SearchResult>;
+}
+<div class="list ticket">
+    <form action="###">
+        <h2>机票预订</h2>
+        <div class="type">
+            <p>航班类型 <mark>单程</mark></p>
+        </div>
+        <div class="form left">
+            <p>
+                <label for="from_city">出发城市</label>
+                <input type="text" name="from_city" id="from_city" placeholder="城市名" value="@(ViewBag.from_city)">
+            </p>
+            <p>
+                <label for="to_city">到达城市</label>
+                <input type="text" name="to_city" id="to_city" placeholder="城市名" value="@(ViewBag.to_city)">
+            </p>
+        </div>
+        <div class="form right">
+            <p>
+                <label for="from_date">出发时间</label>
+                <input type="date" name="from_date" id="from_date" placeholder="时间/日期" value="@(ViewBag.from_date)">
+            </p>
+            <p>
+                @*<label for="to_date">返回时间</label>
+                    <input type="date" name="to_date" id="to_date" placeholder="时间/日期">*@
+            </p>
+        </div>
+        <div class="form button">
+            <p>
+                <button type="submit" id="Submit" class="submit">查询</button>
+            </p>
+        </div>
+    </form>
+    <div class="new">
+        <h2>最新机票</h2>
+        <ul style="display:none">
+            <li>热门城市:</li>
+            <li>北京</li>
+            <li>上海</li>
+            <li>广州</li>
+            <li>深圳</li>
+            <li>重庆</li>
+            <li>成都</li>
+            <li>杭州</li>
+            <li>南京</li>
+        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>路线</th>
+                    <th>日期</th>
+                    <th>航班号</th>
+                    <th>价格</th>
+                    <th class="xs-hidden">税费</th>
+                    <th class="xs-hidden">舱位</th>
+                    <th>剩余座位</th>
+                    <th>航司</th>
+                    <th>预订</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (list.Count > 0)
+                {
+                    foreach (var item in list)
+                    {
+                        <tr>
+                            <td>@(item.DepartureCity)-@(item.ArrivalCity)</td>
+                            <td>@(item.DepartureTime)</td>
+                            <td class="xs-hidden">@(item.FlightNo)</td>
+                            <td class="price">￥@(item.TicketPrice)</td>
+                            <td class="xs-hidden">￥@(item.AirportPrice + item.FuelPrice)</td>
+                            <td class="xs-hidden">@(item.ClassCode)</td>
+                            <td class="xs-hidden">@(item.Storage)</td>
+                            <td>@(item.AirLineName)</td>
+                            <td><a href="@(item.BookUrl == "" ? "#" : item.BookUrl)" class="reserve">预订</a></td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="9">暂无航班信息，系统已经记录您的查询请求，请稍后再试</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    //查询
+    $('#Submit').click(function () {
+        var from_city = $("#from_city").val();
+        var to_city = $("#to_city").val();
+        var from_date = $("#from_date").val();
+        window.Location.Href = "Main/Index?from_city=" + from_city + "&to_city=" + to_city + "&from_date=" + from_date + "";
+    });
+</script>

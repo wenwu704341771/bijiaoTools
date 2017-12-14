@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SoftwarerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="SearchLine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AirLineName" Type="varchar" MaxLength="200" />
+          <Property Name="AirLine" Type="varchar" MaxLength="200" />
+          <Property Name="DepartureCity" Type="varchar" MaxLength="50" />
+          <Property Name="DepartureCityCode" Type="char" MaxLength="3" />
+          <Property Name="ArrivalCity" Type="varchar" MaxLength="50" />
+          <Property Name="ArrivalCityCode" Type="char" MaxLength="3" />
+          <Property Name="IsInter" Type="int" />
+          <Property Name="Days" Type="int" />
+          <Property Name="LastDay" Type="int" />
+          <Property Name="Interval" Type="int" />
+          <Property Name="GatherIP" Type="varchar" MaxLength="50" />
+          <Property Name="GatherTime" Type="datetime" />
+          <Property Name="IsAccessTask" Type="bit" />
+        </EntityType>
+        <EntityType Name="SearchResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="AirLineName" Type="varchar" MaxLength="200" />
+          <Property Name="AirLine" Type="varchar" MaxLength="200" />
+          <Property Name="OrgCity" Type="varchar" MaxLength="50" />
+          <Property Name="DepartureCity" Type="varchar" MaxLength="50" />
+          <Property Name="DepartureCityCode" Type="char" MaxLength="3" />
+          <Property Name="DstCity" Type="varchar" MaxLength="50" />
+          <Property Name="ArrivalCity" Type="varchar" MaxLength="50" />
+          <Property Name="ArrivalCityCode" Type="char" MaxLength="3" />
+          <Property Name="IsInter" Type="int" />
+          <Property Name="DepartureTime" Type="datetime" />
+          <Property Name="ArrivalTime" Type="datetime" />
+          <Property Name="TicketPrice" Type="int" />
+          <Property Name="AirportPrice" Type="int" />
+          <Property Name="FuelPrice" Type="int" />
+          <Property Name="FlightNo" Type="varchar" MaxLength="50" />
+          <Property Name="ClassCode" Type="varchar" MaxLength="50" />
+          <Property Name="BookUrl" Type="varchar" MaxLength="200" />
+          <Property Name="Storage" Type="int" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="UpdateBatch" Type="int" />
+        </EntityType>
+        <EntityType Name="TaskList">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="TaskName" Type="varchar" MaxLength="100" />
+          <Property Name="TaskUrl" Type="varchar(max)" />
+          <Property Name="IsValid" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="SoftwarerModelStoreContainer">
+          <EntitySet Name="SearchLine" EntityType="Self.SearchLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SearchResult" EntityType="Self.SearchResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskList" EntityType="Self.TaskList" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SoftwarerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SoftwarerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SearchLine" EntityType="SoftwarerModel.SearchLine" />
+          <EntitySet Name="TaskList" EntityType="SoftwarerModel.TaskList" />
+          <EntitySet Name="SearchResult" EntityType="SoftwarerModel.SearchResult" />
+        </EntityContainer>
+        <EntityType Name="SearchLine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AirLineName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AirLine" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DepartureCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartureCityCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="ArrivalCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalCityCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="IsInter" Type="Int32" />
+          <Property Name="Days" Type="Int32" />
+          <Property Name="LastDay" Type="Int32" />
+          <Property Name="Interval" Type="Int32" />
+          <Property Name="GatherIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GatherTime" Type="DateTime" Precision="3" />
+          <Property Name="IsAccessTask" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TaskList">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="TaskName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TaskUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsValid" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SearchResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="AirLineName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AirLine" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OrgCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartureCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartureCityCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="DstCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalCityCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="IsInter" Type="Int32" />
+          <Property Name="DepartureTime" Type="DateTime" Precision="3" />
+          <Property Name="ArrivalTime" Type="DateTime" Precision="3" />
+          <Property Name="TicketPrice" Type="Int32" />
+          <Property Name="AirportPrice" Type="Int32" />
+          <Property Name="FuelPrice" Type="Int32" />
+          <Property Name="FlightNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ClassCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Storage" Type="Int32" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBatch" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SoftwarerModelStoreContainer" CdmEntityContainer="SoftwarerEntities">
+          <EntitySetMapping Name="SearchLine">
+            <EntityTypeMapping TypeName="SoftwarerModel.SearchLine">
+              <MappingFragment StoreEntitySet="SearchLine">
+                <ScalarProperty Name="IsAccessTask" ColumnName="IsAccessTask" />
+                <ScalarProperty Name="GatherTime" ColumnName="GatherTime" />
+                <ScalarProperty Name="GatherIP" ColumnName="GatherIP" />
+                <ScalarProperty Name="Interval" ColumnName="Interval" />
+                <ScalarProperty Name="LastDay" ColumnName="LastDay" />
+                <ScalarProperty Name="Days" ColumnName="Days" />
+                <ScalarProperty Name="IsInter" ColumnName="IsInter" />
+                <ScalarProperty Name="ArrivalCityCode" ColumnName="ArrivalCityCode" />
+                <ScalarProperty Name="ArrivalCity" ColumnName="ArrivalCity" />
+                <ScalarProperty Name="DepartureCityCode" ColumnName="DepartureCityCode" />
+                <ScalarProperty Name="DepartureCity" ColumnName="DepartureCity" />
+                <ScalarProperty Name="AirLine" ColumnName="AirLine" />
+                <ScalarProperty Name="AirLineName" ColumnName="AirLineName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskList">
+            <EntityTypeMapping TypeName="SoftwarerModel.TaskList">
+              <MappingFragment StoreEntitySet="TaskList">
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="TaskUrl" ColumnName="TaskUrl" />
+                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SearchResult">
+            <EntityTypeMapping TypeName="SoftwarerModel.SearchResult">
+              <MappingFragment StoreEntitySet="SearchResult">
+                <ScalarProperty Name="UpdateBatch" ColumnName="UpdateBatch" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Storage" ColumnName="Storage" />
+                <ScalarProperty Name="BookUrl" ColumnName="BookUrl" />
+                <ScalarProperty Name="ClassCode" ColumnName="ClassCode" />
+                <ScalarProperty Name="FlightNo" ColumnName="FlightNo" />
+                <ScalarProperty Name="FuelPrice" ColumnName="FuelPrice" />
+                <ScalarProperty Name="AirportPrice" ColumnName="AirportPrice" />
+                <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+                <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+                <ScalarProperty Name="DepartureTime" ColumnName="DepartureTime" />
+                <ScalarProperty Name="IsInter" ColumnName="IsInter" />
+                <ScalarProperty Name="ArrivalCityCode" ColumnName="ArrivalCityCode" />
+                <ScalarProperty Name="ArrivalCity" ColumnName="ArrivalCity" />
+                <ScalarProperty Name="DstCity" ColumnName="DstCity" />
+                <ScalarProperty Name="DepartureCityCode" ColumnName="DepartureCityCode" />
+                <ScalarProperty Name="DepartureCity" ColumnName="DepartureCity" />
+                <ScalarProperty Name="OrgCity" ColumnName="OrgCity" />
+                <ScalarProperty Name="AirLine" ColumnName="AirLine" />
+                <ScalarProperty Name="AirLineName" ColumnName="AirLineName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,9 @@
+﻿@{Html.RenderPartial("~/Views/CtrlShared/Header.cshtml", new { Title = "首页" });}
+<body>
+    @{Html.RenderPartial("~/Views/CtrlShared/HeaderTitle.cshtml");}
+    @{Html.RenderPartial("~/Views/CtrlShared/HeaderLine.cshtml");}
+    <div id="container">
+        @RenderBody()
+    </div>
+    @{Html.RenderPartial("~/Views/CtrlShared/Footer.cshtml");}
+</body>

@@ -26,7 +26,7 @@ namespace SoftwarerAchitecture.Models.DbMainInterface
         }
     
         public virtual DbSet<SearchLine> SearchLine { get; set; }
-        public virtual DbSet<TaskList> TaskList { get; set; }
         public virtual DbSet<SearchResult> SearchResult { get; set; }
+        public virtual DbSet<TaskList> TaskList { get; set; }
     }
 }

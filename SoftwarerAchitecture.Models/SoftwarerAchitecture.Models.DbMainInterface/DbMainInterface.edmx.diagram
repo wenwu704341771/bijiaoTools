@@ -6,8 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="c09f7c1537254ac9b7eb11c356deb927" Name="Diagram1">
         <EntityTypeShape EntityType="SoftwarerModel.SearchLine" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SoftwarerModel.SearchResult" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="SoftwarerModel.TaskList" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SoftwarerModel.SearchResult" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

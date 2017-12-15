@@ -72,7 +72,7 @@
                             <td>@(item.DepartureTime)</td>
                             <td class="xs-hidden">@(item.FlightNo)</td>
                             <td class="price">￥@(item.TicketPrice)</td>
-                            <td class="xs-hidden">￥@(item.AirportPrice + item.FuelPrice)</td>
+                            <td class="xs-hidden">@((item.AirportPrice == "null" ? "" : "￥" + item.AirportPrice) + (item.FuelPrice == "null" ? "" : item.FuelPrice))</td>
                             <td class="xs-hidden">@(item.ClassCode)</td>
                             <td class="xs-hidden">@(item.Storage)</td>
                             <td>@(item.AirLineName)</td>

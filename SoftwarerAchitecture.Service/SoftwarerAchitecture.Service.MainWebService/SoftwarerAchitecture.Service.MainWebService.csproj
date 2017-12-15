@@ -69,6 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchResultService.cs" />
     <Compile Include="SearchLineService.cs" />
+    <Compile Include="TaskService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SoftwarerAchitecture.Models\SoftwarerAchitecture.Models.DbMainInterface\SoftwarerAchitecture.Models.DbMainInterface.csproj">

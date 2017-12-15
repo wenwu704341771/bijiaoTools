@@ -23,17 +23,18 @@ namespace SoftwarerAchitecture.Models.DbMainInterface
         public string DstCity { get; set; }
         public string ArrivalCity { get; set; }
         public string ArrivalCityCode { get; set; }
-        public Nullable<int> IsInter { get; set; }
+        public string IsInter { get; set; }
+        public string DepDateTime { get; set; }
         public Nullable<System.DateTime> DepartureTime { get; set; }
         public Nullable<System.DateTime> ArrivalTime { get; set; }
-        public Nullable<int> TicketPrice { get; set; }
-        public Nullable<int> AirportPrice { get; set; }
-        public Nullable<int> FuelPrice { get; set; }
+        public Nullable<double> TicketPrice { get; set; }
+        public string AirportPrice { get; set; }
+        public string FuelPrice { get; set; }
         public string FlightNo { get; set; }
         public string ClassCode { get; set; }
         public string BookUrl { get; set; }
-        public Nullable<int> Storage { get; set; }
+        public string Storage { get; set; }
         public Nullable<System.DateTime> UpdateTime { get; set; }
-        public Nullable<int> UpdateBatch { get; set; }
+        public Nullable<double> UpdateBatch { get; set; }
     }
 }

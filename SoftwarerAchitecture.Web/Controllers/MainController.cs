@@ -22,12 +22,7 @@ namespace SoftwarerAchitecture.Web.Controllers
         /// <returns></returns>
         public ActionResult Index(string from_city, string to_city, string from_date)
         {
-            DateTime StartTime = DateTime.Now;
-            if (!string.IsNullOrEmpty(from_date))
-            {
-                StartTime = DateTime.Parse(from_date);
-            }
-            var list = new SearchResultService().SvcAdapter.GetList(a => a.DepartureCity == from_city && a.ArrivalCity == to_city && a.DepartureTime == StartTime).ToList();
+            var list = new SearchResultService().SvcAdapter.GetList(a => a.DepartureCityCode == from_city && a.ArrivalCityCode == to_city && from_date.Contains(a.DepDateTime)).OrderBy(a => a.TicketPrice).ToList();
             ViewBag.ModelList = list;
             ViewBag.from_city = from_city;
             ViewBag.to_city = to_city;

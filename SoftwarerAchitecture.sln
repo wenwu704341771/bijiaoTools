@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwarerAchitecture.DBUtil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwarerAchitecture.Service.MainWebService", "SoftwarerAchitecture.Service\SoftwarerAchitecture.Service.MainWebService\SoftwarerAchitecture.Service.MainWebService.csproj", "{DFE82EFD-0A4B-4211-AFE1-B75F9553E787}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwarerAchitecture.Modules.MainInterface", "SoftwarerAchitecture.Modules\SoftwarerAchitecture.Modules.MainInterface\SoftwarerAchitecture.Modules.MainInterface.csproj", "{C3C236E6-AB64-4DA3-93C5-2BD4988B9E7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DFE82EFD-0A4B-4211-AFE1-B75F9553E787}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFE82EFD-0A4B-4211-AFE1-B75F9553E787}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFE82EFD-0A4B-4211-AFE1-B75F9553E787}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3C236E6-AB64-4DA3-93C5-2BD4988B9E7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3C236E6-AB64-4DA3-93C5-2BD4988B9E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3C236E6-AB64-4DA3-93C5-2BD4988B9E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3C236E6-AB64-4DA3-93C5-2BD4988B9E7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
